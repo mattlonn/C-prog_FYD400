@@ -1,0 +1,138 @@
+C-programmering BokAntek. "Vägen till C"
+
+KAP 2 - C i ett nötskal
+    Innan exekevering -> Kompilering: "Koden översätts"
+
+    ex. på kompilering i kommandotolk:  gcc hej.c -o hej.exe
+    om man istället har flera filer:    gcc hej1.c hej2.c hej3.c -o hej.exe
+
+    *Inkluderingsfil* ? ex: stdio.h
+
+2.2
+    *Kommentera*
+        // för en rad       (endast C99)
+        /*
+           för flera rader
+        */
+    float num;
+    printf("%.2f", num);    // Float som ger 2 decimaler
+    printf("13%.2f", num)   // Float som ger 2 decmialer OCH 12 utskriftsportiner (bra för om man har siffror som är olika stora)
+
+    Preprocessor - Gör redigeringar i programtexten ex. lägger in macron
+
+    *Macro* #define ANTAL_AR 10; <- vi har definerat ett värde vi kan använda över hela koden utan att behöva gå igenom hela koden om vi vill byta värdet (const är bättre)
+2.4
+    *"END OF LINE"* - ctrl + z för att ge end of line, (om man matar in data)
+2.7
+    *GetChar();* får även med mellanslag i input
+
+---------------------------------------------------------------------------------------------------------------------------
+KAP 3 - C från grunder
+    ett namn kallas för IDENTIFIERARE
+
+    OCTO - Talet börjar med 0:     exempel:    012     -> i dec: 10 
+    HEXA - talet börjar med 0x:    exempel:    0x1c    -> i dec: 28
+3.3
+    man kan styra vilken typ kompilator ska ge heltals konstanter man skriver då:
+    ex: 45L         ger typen LONG INT
+        0501u       ger typen UNSIGNED INT
+        0x4a65LL    ger typen LONG LONG INT
+
+3.4
+    ESCAPE-sekvenser för icke skrivbara tecken
+        ____________________________________________________________________________________________________
+        |   \0      -   (null-character)    markerar slutet på teckensträngar.                              |
+        |   \a      -   (alert)             Ger en ljud- eller ljussignal.                                  |
+        |   \b      -   (backspace)         Flyttar utskriftsposition ett steg vänster                      |
+        |   \f      -   (form feed)         '' till början av nästa sida                                    |
+        |   \n      -   (new line)          '' till nästa rad                                               |
+        |   \r      -   (carriage return)   '' till början av aktuell rad                                   |
+        |   \t      -   (horisontal tab)    '' till nästa tabulatorstopp (tab)                              |
+        |   \v      -   (vertical tab)      '' till den början på den rad med nästa tabulatorstopp          |
+        |___________________________________________________________________________________________________|
+    
+3.5 
+    När man gör beräkningar på tal med olika typer så omvandlas de mindre typerna till större under ekvationen.
+    om man istället vill styra vilka typer som ska användas. Kallas EXPLICITA TYPOMVANDLINGAR (eller bara typomvandling)
+                (typnamn) uttryck
+        ex.     (unsigned int) num1
+                (long double) (num1 + num2)
+                (char)    num1
+3.6
+    ENUM
+        om man kan behöva beskriva ett värde i ord. ex månader, istället för "månad1" vill man skriva "Januari" eller kort i en kortleks färg
+        man kan då skriva
+
+        enum kort_farg(klover, ruter, hjarter, spader);             // deklarering av enumet
+        enum kort_farg farg1, farg2;                                // 2 var skapade av typen kort_farg
+
+        farg1 = ruter;                                              // var tilldelas ett nytt värde
+    VOID
+        För att beskriva "inget returvärde". Variabler kan inte initieras som detta.
+    PRINTF()
+        %% för att skriva ett % annars tolkas det som "omvanlingsspecifikation" alltså att en var ska skrivas och vilken typ det ska vara ex. %i (integer)
+        ! alla tall mindre än INT kommer att omvandlas till en INT 
+          Detta gäller även float som blir double vid utskrift
+
+        Man kan göra fler editeringar med printf
+        ex:
+            "-"gör text vänster justerad                                    ex. printf("%-d", i);    ->  utskrift:27
+            "+" gör ger även positiva tal ett tecken framför                ex. printf("%+d", i);    ->  utskrift:+27
+            " " ger ett mellanrum innan talet                               ex. printf("% d", i);    ->  utskrift: 27
+            "0" fyller rummet innan med nollor                              ex. printf("%05d", i);   ->  utskrift:00027
+            "-" ett ex till                                                 ex. printf("%-5d", i);   ->  utskrift:"27   "
+    SCANF()
+        först variabler typ och sedan pekaren till minnet där det ska ligga.
+
+        Läsa in en textrad
+        char text[100];
+        scanf("%s", text);      //Lägg märke till att det inte är någon pekare (text är redan en pekare till 100 reserverade celler)
+                                ! Inmatning stoppas vid första mellanslaget.e
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+KAP 4 - Uttryck och operationer
+    Unära + operation kan hjälpa att utföra beräkningar i olika ordningar
+        a + + (b + c) <- här utförs b + c före tack vara + + 
+        Detta är överordnat / och * med!
+    
+    <math.h>
+            Lib att inkludera om man vill ha matematiska funktioner.
+            ! Se upp så rätt input ges. tex. cos() ska ha input i radianer och inte grader
+    Öknings/minsknings operatorer
+            num1++;
+            num1 = num1 + 1;
+    Jämförelse operatorer
+            ==  Lika med        <   Mindre än           > större än
+            !=  Icke lika med   <= mindre eller lika    >= större eller lika
+    Logiska operatorer
+            &&  och             ||  eller               ! icke
+    Villkorsoperatorn
+            Istället för en if/else sats när man ska göra en simpel beräkning kan man använda denna
+                if (x > y)
+                    z = x;
+                else
+                    z = y;      ersätts med --->    z = (x > y) ? x:y;
+            Den har den allmänna formen:
+            uttryck_1 ? uttryck_2 : uttryck_3;
+
+            ! om uttryck_2 är en UINT, och uttryck_3 är en double så blir ändå uttryck_2 omvandlat till double.
+    BitOperatorer
+            ~   Negation, bit för bit       <<  Vänstershift                    >>  Högershift
+            &   OCH, bit för bit            ^   Exclusive ELLER,bit för bit     |   ELLER, bit för bit
+
+            ~ gör invers av alla bitar.
+                ex: c1 = 5;         // c1 = 00000101
+                c2 = ~c1;           // c2 = 11111010
+            & ger en etta om båda operanderna har en etta.
+            ^ ger en etta om endast en av operanderna har en etta (XOR)
+            | ger en etta om någon av operanderna har en etta.
+                ex: c1 = 5;             // c1 = 00000101
+                    c2 = 6;             // c2 = 00000110
+                    c3 = c1 & c2;       // c3 = 00000100
+                    c4 = c1 | c2;       // c4 =  00000111
+                    c5 = c1 ^ c2;       // c5 = 00000011
+            << skiftar alla bitar ett steg vänster
+            >> '' höger
+
+
+            

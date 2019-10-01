@@ -1,0 +1,8 @@
+ASCII
+tecken      hexa    dec
+å   -       \x86    \134
+ä   -       \x84
+ö   -       \x94
+Å   -       \x8F
+Ä   -       \x8E
+Ö   -       \x99    \153
