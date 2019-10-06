@@ -1,0 +1,65 @@
+Uppräkning av uppgifter
+
+Del upp     poäng   namn                            status
+11 (3p)
+    111     1p      'Hello world'                   Done
+    112     1p      'ASCII'                         Done
+    113     1p      'kommentarsyntax'               Done
+12 (2p)
+    121     1p      'Input och output, tal'         Done
+    122     1p      'Formaterad outout av tal'      Done
+13 (8p)
+    131     1p      'Bitar'                         Done
+    132     1p      'Operatorer'
+    133     1p      'fler operatorer'
+    134     2p      'while och case satser'         Done
+    135     2p      'växelkassa'                    Done
+    136     1p      'Formatering och gränser'
+14 (5p)
+    141     2p      'Funktioner'
+    142     1p      'Funktionsargument, pass byv'
+    143     1p      'Omvandling'
+    144     1p      'bit operationer'
+15 (16p)
+    151     2p      'Pekare, avref, adresser'
+    152     1p      'Flyttande pekare'
+    153     1p      'Minnesadresser'
+    154     1p      'Fält'
+    155     1p      'Sortering och lister'
+    156     2p      'Dyn. allokering av minne'
+    157     1p      'mer dyn. allokkering av minne'
+    158     2p      'Sortering'
+    159     2p      'Textsträngar fort.'
+    1510    1p      'Fält av pekare'
+    1511    2p      'säker kopiering'
+16 (4p)
+    161     2p      'Länkad lista'
+    162     2p      'Binärträd'
+
+------------------- Kap 2: Filhantering ---------------------
+21 (10p)
+    211     1p      'Filer'
+    212     1p      'TextAnalys'
+    213     1p      'Mönstermatchning'
+    214     2p      'Komprimering'
+    215     1p      'Statistisk'
+    216     2p      'ASCII konst'
+    217     2p      'Sorting'
+
+------------------------ Kap 3: GUI --------------------------
+31
+    311     1p      'Händelsestyrning'
+    312     1p      'Timer'
+    313     1p      'Multipla paneler'
+    314     1p      'Plotta fysikdata'
+    315     2p      'Dataanalys'
+    316     2p      'Koppla in/utdata med filer'
+32
+    321     1p      'Attribut'
+33
+    331     1-3p    'Egen GUI uppgift'
+---------------------- Kap 4: Länkning -----------------------   
+41
+    411     1p      'Statisk länkning'
+42
+    421     2p      'Dynamisk länkning i praktik'

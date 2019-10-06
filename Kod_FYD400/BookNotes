@@ -133,6 +133,89 @@ KAP 4 - Uttryck och operationer
                     c5 = c1 ^ c2;       // c5 = 00000011
             << skiftar alla bitar ett steg vänster
             >> '' höger
+    Tilldelningsoperatorer
+            =       *=      /=      %=      +=      -=
+            <<=     >>=     &=      ^=      |=
+        
+    sizeof-operatorn
+            returnerar antalet bytes i en variabler
+            ex.
+                    sizeof(int)     //ger beroende på system 2 eller mer.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+KAP 5 - Satser
+        Det som står innan ett ";" kallas sats
+
+        if  if (argument){
+                sats;
+            }
+            else if(argument 2){
+                sats2;
+            }
+            else{
+                sats3;
+            }
+
+        switch case
+            switch(type){
+                case 'a':
+                    sats;
+                    break;          //Utan break så kör programmet igenom varje följande states
+                case 'b':
+                    satsb;
+                    break;
+                case 'c':
+                    satsc;
+                    break;
+                default:
+                    satser;         // om inget alternativ valdes kan en default sköta resterande (som else)
+            }
+        while
+            while(argument){
+                satser;
+            }
+        do
+            do{
+
+            }while(argument);
+        for
+            for(int i=0; i<10; i++){
+                satser;
+            }
+
+            ** nestade for! **
+
+            for(i = 0, j = 0; s[i] < p[j]; i++, j--){
+
+            }
+    Hoppsatser
+        Continue - endast i iterationssatser
+                Gör så programmet hoppar direkt till nästa iteration
+        Break - Endast switch case och iterationssatser
+                avbryter satsen
+        return - anger vad som ska returneras
+        GoTo - kan göra direkta hopp utifall t.ex. något går fel. 
+                anses av många som dålig kod så använd ej.
+    
+--------------------------------------------------------------------------------------------------------------------------------------------------
+KAP 6 - Funktioner och programstruktur
+    Prototyp - Funktionshuvudet (ex. "int addNumbersgf(int a, int b);)
+    Ellips-notationen
+            när man itne vet antalet inputs vi komemr ha 
+            (ex. printf eller scanf fungerar så)
+            ex.
+                float f(int a, float b, ...);
+
+    Funktionsdeklarationer
+            Till skillnad av andra språk ska allt deklareras 
 
 
+            **** FYLL I ****
+
+    Funktionsanrop
+            vid varje anrop exekeveras funktionen.
+            ex.
+                z = maxValue(a, b);     // int a, int b görs endast i deklerationen
+
+            De argument som ges i ett funktiosnanrop kallas ofta "aktuella parametrar"
             

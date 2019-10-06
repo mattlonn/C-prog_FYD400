@@ -1,0 +1,83 @@
+---- Lecture 5 ---- 3 okt 2019
+
+*
+Pointers, arrays, dynamic memory allocation, Structs (and unions)
+*
+    RECAP:
+            compund statement? - inside brackets {}
+            program over several files? - use include with <> or "" (<>installed lids, "" for files from same folder as main)
+    
+    Varför pointers?
+            vi blir limiterade av kod, men med pointers kan man alltid utföra uppgiften utan problem.
+
+            float z := 13.5;
+            float *floatp, *floatq;
+                // *floatp - points to a float variable
+                // &floatp - Adressen av floatp, pointer value ('&' = adress operator)
+            flaoatp = &z;           // floatp pekar nu på adressen av z
+            *floatq = *floatp;      // floatq har nu samma värde som z hade innan.
+            printf("%p", floatp);   // Skriver ut adressen till floatp
+?    Segfault??
+
+    ARRAY
+            int array[100]; //I C är inte arrayer dynamiska.
+
+            Initisiera?
+                int array[100] = {3,4,5,624};
+    Char array
+            char text[50];
+            char lecture[] = "physics"  // vi behöver inte skriva längden på arrayen om vi samtidigt ger dens värde
+    array of an array
+            int matrix[3][5];
+            int *p = matrix[1]; //Pointer till 2a raden, 1a elementet.
+            initiering
+                int matrix[3][4] = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
+    
+    copy a textstring?
+            int text1[20], text2[20];
+            *text1 = *text2;    //Detta kopierar faktiskt bara FÖRSTA cellen
+            while(*text1++ = *text2++);
+            ;
+    Call by reference
+            I C kan en funktion endast returnera 1 värde, och ingen array. Då kan man istället skicka en pointer
+            ex. 
+                int i = 8;
+                plus3(&i);
+                ...
+                void plus3(int *iref){          // *iref är en alias för i
+                    *iref = *iref + 3;          // Nu ändrar vi iref, men också i
+                }
+    Dynamic memory allocation 
+            om vi inte vet längden på hur mycket minne vi behöver
+            !* #include <stdlib.h>      //behövs
+
+            malloc
+            calloc
+            realloc
+            free    -   Release the memory
+    STRUCT
+            som en array fast med värden av olika typer
+            ex  
+                struct car
+                {
+                    owner[40], regnumber[6], ;brand[15]
+                    int age;
+                    float price;
+                } d1;
+
+                // How to access? :
+                d1.owner = "Kalle";
+                // d1 är en pointer och även owner är en pointer
+
+                !* Funktioner kan inte skicka tillbaka arrays men dom kan skicka structs!
+    UNION
+            union car
+                {
+                    owner[40], regnumber[6], ;brand[15]
+                    int age;
+                    float price;
+                } d1;
+                // Liknande struct men vi kan bara hålla ett värde i taget.
+                ex.
+                    d1.owner = "kalle";
+                    d1.price = 43;          //Nu har vi bara price i värdet, "kalle" blev överskrivet och finns inte mer
