@@ -218,4 +218,62 @@ KAP 6 - Funktioner och programstruktur
                 z = maxValue(a, b);     // int a, int b görs endast i deklerationen
 
             De argument som ges i ett funktiosnanrop kallas ofta "aktuella parametrar"
+
+
+
+    Lagringsklasser (auto, register, extern och static)
+
+            Om man inte anger lagrinsklass antas FUNKTIONER vara extern, PARAMETRAR 
+            till en funktion antas vara auto, lika för en VARIABEl inuti ett block.
+            För en VARIABEL I YTTERSTA nivån antas extern.
+
+            Auto - ej i deklarationer i yttersta nivån
+                ex.
+                    auto int k;
+                den vanligaste. Minnet är reserverat tills programmet lämnar blocket.
+                man kan ej nå variablen efteråt
+            register - ej i deklarationer i yttersta nivån
+                ex.
+                    register int j;
+                till för att öka exekveringshastigheten om det krävs (t.ex. uppräknare)
+                genom att placera värdet i processorns register. Inte en garant för
+                att processorn tillåter detta, då tolkas det som en auto ist.
+
+            extern - både variabler och funktioner!
+                ex. 
+                    extern int j;
+                Används när man vill komma åt funktioner/variabler deklarerade i andra
+                källkodsfiler.
+
+                -*-* orkar inte fylla i, se övningar efter bättre ex.
             
+            static - både variabler och funktioner
+                ex. 
+                    static unisgned int nr = 1;
+                en variabel/funktion som aldrig ändrar värde. Värdet ges i början av 
+                exekeveringen. Minnet för värdet hålls tills hela programmet är slut.
+
+                Däremot! ser man inte variabeln utanför sin funktion men nästa gång
+                funktionen anropas har variabeln värdet från förra exekeveringen.
+    
+    Volatile
+            Flyktiga objekt
+            Om t.ex. ett I/O register som kan styras av andra enheters input
+            (ex. tangentbord) så kan man med detta säga till kompilatorn att ingen
+            optimeringar om minneshantering kommer göras.
+    
+    MODULÄR PROGRAMUTVECKLING
+            Med större program och fler filer är det svårt att i varje fil där 
+            externa funktioner anropas också hålla reda på och deklarera vart enda 
+            funktion och variabel. därav har man INKLUDERINGSFILER.H där dessa 
+            deklerationer görs.
+
+            ex på vad som kan stå i dessa är:
+                #include "dek.h"        // Finns i eget bibliotek
+                #include <stdio.h>      // finns i standardbiblioteken
+
+            Ett sätt att använda inkluderingsfiler är att konstruera MODULER (PAKET).
+            En moduls uppgift är en separat programdel som har som uppgift att hantera
+            det som logiskt hör ihop. De bstår av 2 delar
+                                        * Specifikation
+                                        * Modulens kropp

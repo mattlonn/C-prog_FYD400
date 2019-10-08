@@ -14,8 +14,21 @@ c) förklara skillnaden mellan två preprocessordirektiv:
 #include "141_convert.h"
 
 int main(void){
+    unsigned long distance;
 
-
+    printf("Hej, mata in distansen i m: ");
+    scanf("%d", &distance);
+    printf("\nDistansen i mm blir: %d", meter2milli(distance));
 
     return 0;
 }
+/*
+b)
+
+
+c) med <> söker kompilator i standardbiblioteken
+men med "" söker den i filens egna mapp
+
+
+
+*/

@@ -1,0 +1,18 @@
+deklaration
+        man skapar tex en funktion
+        man kör en deklaration att det 
+        "finns något med detta namnet som kräver dessa inputs"
+        ex int papper(int a, float b);
+definition
+        Definitionen är "hela saken" något har blivit deklarerat 
+        och definitionen är vad det är för något.
+        alltså själva innehållet i funktionen
+
+Inkluderingsfiler
+
+Poster
+
+Volatile
+    Flyktigt minne. mer för kompilatorn att detta värdet kan ändras
+    av andra saker än programmet själv. 
+    ex ett I/O register.

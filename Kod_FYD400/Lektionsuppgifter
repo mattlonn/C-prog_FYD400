@@ -16,10 +16,10 @@ Del upp     poäng   namn                            status
     135     2p      'växelkassa'                    Done
     136     1p      'Formatering och gränser'
 14 (5p)
-    141     2p      'Funktioner'
-    142     1p      'Funktionsargument, pass byv'
-    143     1p      'Omvandling'
-    144     1p      'bit operationer'
+    141     2p      'Funktioner'                    Påbörjad (1 fråga kvar)
+    142     1p      'Funktionsargument, pass byv'   Done
+    143     1p      'Omvandling'                    Påbörjad
+    144     1p      'bit operationer'               Done
 15 (16p)
     151     2p      'Pekare, avref, adresser'
     152     1p      'Flyttande pekare'
