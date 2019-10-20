@@ -12,8 +12,9 @@ int main(void){
         "3. Subtrahera med 3\n"
         "4. Avsluta\n"
         "val: ", value);
-        if (scanf("%d", &menu) != 1){               // Misslyckad inläsning ger scanf() = 0, då fick vi inte ett heltal
-            printf("\nFel input!\n\n");             // failmedd
+        if (scanf("%d", &menu) == 0){       // Misslyckad inläsning ger scanf() = 0, då fick vi inte ett heltal
+            printf("\nFel input!\n\n");     // failmedd
+            return 0;
         }
         else{
             switch(menu){                   // Menyvalet utförs
@@ -27,7 +28,7 @@ int main(void){
                     value -= 3;
                     break;
                 case 4:
-                    printf("bye bye");         
+                    printf("bye bye");      // Avslutar 
             }
         }
 
@@ -35,3 +36,6 @@ int main(void){
 
     return 0;
 }
+
+
+//Fixa fel input

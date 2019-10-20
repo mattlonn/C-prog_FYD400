@@ -7,9 +7,12 @@
 
 int main(void){
     int tal1, sum, counter = 1;
+    char t;
     printf("Ett heltal som ska g\x86ngras med 2\nMata in ett heltal: ");
-    if (scanf("%d", &tal1) == 0)
-        printf("\ninvalid input >:[");      // om scanf = 0 blev det något fel. Då hamnar vi här
+    if (scanf("%d", &tal1) == 0){
+        printf("\ninvalid input");      // om scanf = 0 blev det något fel. Då hamnar vi här
+        return 0;
+    }
     else{
         sum = tal1 * 2;
         printf("\n%d * 2 = %d", tal1, sum);
@@ -22,3 +25,6 @@ int main(void){
     
     return 0;
 }
+
+//Fixa fel input!
+

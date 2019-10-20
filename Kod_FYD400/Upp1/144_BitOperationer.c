@@ -11,11 +11,11 @@ int main(void){
     unsigned int value, shiftAmount;
     printf("Ange ett tal f\x94r shiftoperation samt antal skiftningar:\n"
             "(ex: 128 8): ");
-    scanf("%d %d", &value, &shiftAmount);
-    printBin(value);
+    if (scanf("%d %d", &value, &shiftAmount) < 2)
+        return 0;       //Fel input
+    printBin(value);                    // Printar
     printf("\nshifting!");
-    printBin(shifter(value, shiftAmount));
-
+    printBin(shifter(value, shiftAmount)); // Shiftar & printar
 
     return 0;
 }
@@ -24,12 +24,14 @@ int main(void){
 unsigned int shifter(unsigned int a, unsigned int shifts){
     unsigned int temp, bitmask, maxsize;
     maxsize = 16;
-    temp = a;
+    if (maxsize < shifts)
+        shifts %= shifts/maxsize;
+    temp = a;       // Koperar innan skiftning så vi "kommer ihåg" binföljden
 
     a <<= (shifts > maxsize) ? maxsize : shifts;
     temp >>= (shifts > maxsize) ? maxsize : maxsize - shifts;
 
-    return a = a | temp;
+    return a = a | temp; // a är lika med eller bit för bit 
 }
 void printBin(int printValue){
     static int first=0;
@@ -38,7 +40,7 @@ void printBin(int printValue){
         if(i%4==0){
             printf(" ");
         }
-        (printValue & 0x8000) ? printf("1") : printf("0");
+        (printValue & 0x8000) ? printf("1") : printf("0");//Vi kollar vilken bit i slutet av value
 
         printValue <<= 1;
     }

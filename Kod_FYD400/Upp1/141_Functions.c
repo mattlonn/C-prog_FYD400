@@ -17,7 +17,11 @@ int main(void){
     unsigned long distance;
 
     printf("Hej, mata in distansen i m: ");
-    scanf("%d", &distance);
+    if (scanf("%d", &distance) == 0)
+    {
+        printf("Invalid input");
+        return 0;
+    }
     printf("\nDistansen i mm blir: %d", meter2milli(distance));
 
     return 0;

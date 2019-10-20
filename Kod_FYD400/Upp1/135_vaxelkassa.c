@@ -3,22 +3,29 @@
 //Även antalet och vilka sedlar
 
 #include <stdio.h>
+int printInputError();
 
 int main(void){
     float price, payed, moneyBack;
-    int moneyBack_temp, bills[8] = {1000,500,100,50,20, 10, 5, 1};
-    //Valörere i enn array så vi kan iterera genom den (bills för att jag itne orkar ändra)
+    int inputError = 0, moneyBack_temp, bills[8] = {1000,500,100,50,20, 10, 5, 1};
+    //Valör i enn array så vi kan iterera genom den (bills för att jag inte orkar ändra)
 
+    // MENU
     do{
+        inputError = 0;
         printf("Ange pris och summa betalat med mellanslag mellan: ");
-        scanf("%f %f", &price, &payed);     //input, om priset är högre görs inmatning om
-    }while(price > payed);
+
+        inputError = (scanf("%f %f", &price, &payed) < 2) ? printInputError() : 0;// if error call printError (empty the stack)
+        if(price > payed){
+            printf("Betala mer tack.\n\n");
+            inputError = 1;
+        }  
+    }while(inputError);
 
 
-    //Räknar ut om vi har 0.5 i värdet
-    moneyBack_temp = (int) (payed * 10 - price * 10);
-    moneyBack += (moneyBack_temp % 10 < 5) ? moneyBack_temp/10: moneyBack_temp/10 + 0.5; //moneyBack = 0.5;
-    moneyBack_temp /= 10;
+    moneyBack_temp = (int) payed - price;   //Cut of all deciamls att store temporary
+    moneyBack = payed - price - (moneyBack_temp + 0.25) > 0 ? moneyBack_temp + 0.5: moneyBack_temp;
+    
 
     printf("Pengar tillbaks: %.1f \nI sedlar&mynt:\n", moneyBack);
     printf("%d: %d\n", bills[0], moneyBack_temp/1000);
@@ -30,4 +37,11 @@ int main(void){
     printf(" 0.5: %d", moneyBack > (int) moneyBack ? 1:0);
 
     return 0;
+}
+
+int printInputError(void){
+    char errorRead;
+    scanf("%c", &errorRead);
+    printf("Du skrev %c, skriv bara siffror tack\n\n", errorRead);
+    return 1;
 }
